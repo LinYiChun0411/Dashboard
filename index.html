@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>投資戰情室 · Mockups</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#f8fafc;--surface:#fff;--border:#e2e8f0;--text:#1e293b;--muted:#64748b;--accent:#2563eb}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+  .wrap{max-width:640px;width:100%}
+  .eyebrow{font-size:12px;font-weight:700;letter-spacing:.08em;color:var(--accent);text-transform:uppercase;margin-bottom:8px}
+  h1{font-size:26px;font-weight:800;margin-bottom:6px}
+  p.lead{color:var(--muted);font-size:14px;line-height:1.6;margin-bottom:28px}
+  .cards{display:flex;flex-direction:column;gap:14px}
+  a.card{display:block;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:18px 20px;text-decoration:none;color:inherit;box-shadow:0 1px 3px rgba(0,0,0,.04);transition:border-color .15s,box-shadow .15s}
+  a.card:hover{border-color:var(--accent);box-shadow:0 4px 12px rgba(37,99,235,.12)}
+  .card-title{font-size:15px;font-weight:700;margin-bottom:4px}
+  .card-desc{font-size:13px;color:var(--muted);line-height:1.5}
+  footer{margin-top:32px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Investment War Room</div>
+  <h1>投資戰情室 · 版面 Mockups</h1>
+  <p class="lead">AI 生成每日投資簡報的靜態 HTML 版面提案，供台灣財富管理場景參考。內含之數據、股票代碼與日期皆為設計示意，非真實市場資訊。</p>
+  <div class="cards">
+    <a class="card" href="dashboard.html">
+      <div class="card-title">主版面 · dashboard.html</div>
+      <div class="card-desc">固定側欄導覽 + 執行摘要 / 市場環境 / 股票與ETF / 投資策略 / 風險提示，含可展開的個股明細列</div>
+    </a>
+    <a class="card" href="investment_battlecard_mock.html">
+      <div class="card-title">Battlecard 版面 · investment_battlecard_mock.html</div>
+      <div class="card-desc">雙欄密集排版，市場觀點 / 資金流向 / 新聞佐證 / 產業推導分頁，附客戶態樣自動分群與 RM 話術（假資料示意版）</div>
+    </a>
+  </div>
+  <footer>Repo: github.com/LinYiChun0411/Dashboard1</footer>
+</div>
+</body>
+</html>
