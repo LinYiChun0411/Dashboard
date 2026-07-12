@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>投資戰情室 · 2026 年 06 月 03 日 17:28</title>
+<style>
+  *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#f8fafc;--surface:#fff;--border:#e2e8f0;--border2:#cbd5e1;--text:#1e293b;--muted:#64748b;--accent:#2563eb;--sidebar-w:220px;--header-h:58px;--banner-h:30px}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Microsoft JhengHei',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+  .header{position:fixed;top:0;left:0;right:0;z-index:200;height:var(--header-h);background:rgba(255,255,255,.96);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 28px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+  .logo{width:34px;height:34px;border-radius:9px;background:linear-gradient(135deg,#1d4ed8,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:17px;box-shadow:0 2px 8px rgba(37,99,235,.3)}
+  .pill{padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;border:1px solid;white-space:nowrap}
+  .sidebar{position:fixed;top:calc(var(--header-h) + var(--banner-h));left:0;bottom:0;width:var(--sidebar-w);background:var(--surface);border-right:1px solid var(--border);overflow-y:auto;z-index:100}
+  .sidebar::-webkit-scrollbar{width:3px}.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px}
+  .nav-link{display:flex;align-items:center;gap:9px;padding:8px 18px;font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;border-left:2px solid transparent;transition:all .15s}
+  .nav-link:hover{color:#334155;background:#f8fafc}
+  .nav-link.active{color:var(--accent);background:#eff6ff;border-left-color:var(--accent);font-weight:600}
+  .nav-num{width:20px;height:20px;border-radius:5px;font-size:10px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:#f1f5f9;color:#94a3b8;transition:all .15s}
+  .nav-link.active .nav-num{background:var(--accent);color:#fff}
+  .main{margin-left:var(--sidebar-w);padding-top:calc(var(--header-h) + var(--banner-h))}
+  .wrap{max-width:1320px;padding:28px 36px 60px}
+  .section{margin-bottom:36px;scroll-margin-top:calc(var(--header-h) + var(--banner-h) + 16px)}
+  .card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  .two-col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .ul-plain{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .tbl-wrap{border-radius:12px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;box-shadow:0 1px 3px rgba(0,0,0,.04)}
+  table{width:100%;border-collapse:collapse;min-width:800px}
+  thead{background:#f8fafc}
+  th{padding:11px 15px;font-size:10px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:1.2px;text-align:left;white-space:nowrap;border-bottom:2px solid var(--border)}
+  td{padding:11px 15px;vertical-align:middle}
+  .tbl-group-stock{background:#eff6ff;border-bottom:1px solid #bfdbfe}
+  .tbl-group-etf{background:#fffbeb;border-top:2px solid var(--border2);border-bottom:1px solid #fde68a}
+  .tbl-group-stock td,.tbl-group-etf td{padding:7px 15px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+  .tbl-group-stock td{color:#2563eb}.tbl-group-etf td{color:#d97706}
+  tr.row-stock{background:#fff;border-bottom:1px solid var(--border);cursor:pointer;transition:background .12s}
+  tr.row-etf{background:#fffef5;border-bottom:1px solid #fef9c3;cursor:pointer;transition:background .12s}
+  tr.row-stock:hover{background:#f8faff}
+  tr.row-etf:hover{background:#fffbeb}
+  tr.row-stock.expanded{background:#eff6ff!important}
+  tr.row-etf.expanded{background:#fefce8!important}
+  .chevron{display:inline-block;transition:transform .2s}
+  tr.expanded .chevron{transform:rotate(90deg);color:#2563eb!important}
+  .strat-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .risks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:14px}
+  .news-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+  .footer{text-align:center;padding:28px 36px;color:#94a3b8;font-size:11px;border-top:1px solid var(--border);background:var(--surface);line-height:1.9}
+  ::-webkit-scrollbar{width:5px;height:5px}
+  ::-webkit-scrollbar-track{background:var(--bg)}
+  ::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+  @media(max-width:900px){.sidebar{display:none}.main{margin-left:0}.wrap{padding:20px 16px 60px}.strat-grid,.two-col{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div style="position:fixed;top:var(--header-h);left:0;right:0;z-index:190;height:var(--banner-h);background:linear-gradient(90deg,#f5f3ff,#eff6ff);border-bottom:1px solid #ddd6fe;display:flex;align-items:center;justify-content:center;font-size:11px;color:#7c3aed;font-weight:500">
+  ⚡ 本報告由 AI 自動生成，僅供參考，不構成投資建議
+</div>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:12px">
+    <div class="logo">⚡</div>
+    <div>
+      <div style="font-size:17px;font-weight:800;color:var(--text)">投資戰情室</div>
+      <div style="font-size:10px;color:var(--muted);margin-top:1px">Investment War Room · AI-Powered Daily Briefing</div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <span class="pill" style="background:#f0fdf4;color:#16a34a;border-color:#bbf7d0">偏多</span>
+    <span class="pill" style="background:#fef2f2;color:#dc2626;border-color:#fecaca">風險: 高</span>
+    <div style="font-size:10px;color:var(--muted);text-align:right;line-height:1.7">每日更新 09:30<br><strong style="color:var(--text)">2026 年 06 月 03 日 17:28</strong></div>
+  </div>
+</div>
+
+<aside class="sidebar">
+  <div style="padding:14px 0 40px">
+    <div style="font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;display:block;padding:0 18px;margin:12px 0 6px">今日快覽</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;padding:0 12px;margin-bottom:4px">
+      <div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:9px 8px;text-align:center">
+        <div style="font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">情緒</div>
+        <div style="font-size:13px;font-weight:800;color:#16a34a;line-height:1.1">偏多</div>
+      </div>
+      <div style="background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:9px 8px;text-align:center">
+        <div style="font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1px;margin-bottom:3px">風險</div>
+        <div style="font-size:13px;font-weight:800;color:#dc2626;line-height:1.1">高</div>
+      </div>
+    </div>
+    <div style="height:1px;background:var(--border);margin:12px 14px"></div>
+    <div style="font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;display:block;padding:0 18px;margin-bottom:6px">章節導覽</div>
+    <a class="nav-link active" href="#s1"><span class="nav-num">1</span>執行摘要</a>
+    <a class="nav-link" href="#s2"><span class="nav-num">2</span>市場環境與核心觀點</a>
+    <a class="nav-link" href="#s3"><span class="nav-num">3</span>股票與 ETF</a>
+    <a class="nav-link" href="#s4"><span class="nav-num">4</span>整體投資策略</a>
+    <a class="nav-link" href="#s5"><span class="nav-num">5</span>關鍵風險提示</a>
+    <a class="nav-link" href="#s6"><span class="nav-num">6</span>最新相關資訊</a>
+    <div style="height:1px;background:var(--border);margin:12px 14px"></div>
+    <div style="font-size:9px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:2px;display:block;padding:0 18px;margin-bottom:6px">來源文件</div>
+    <div style="padding:0 18px;font-size:11px;color:var(--muted);line-height:1.9">20260601_本周關注就業、PMI、停火進展及AI需求延續性.pdf、20260603_FuBon_美股日報.pdf、2026年6月產業投資策略_Strategy_c_052926.pdf、事件分析_Marvell Computex_20260602.pdf、富邦市場展望060326.pdf、總經與投資週報_060126.pdf</div>
+  </div>
+</aside>
+
+<div class="main"><div class="wrap">
+
+  <div class="section" id="s1">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">1</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text)">執行摘要</div>
+      <div style="font-size:11px;color:var(--muted)">Executive Summary</div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">市場概覽</div>
+      <p style="font-size:14px;color:#334155;line-height:1.9;margin-bottom:16px">本週美股處於「AI結構性多頭」與「總經逆風」並存的微妙平衡：一方面，Marvell在COMPUTEX獲輝達黃仁勳公開背書、微軟Build 2026發表7款自研模型、Broadcom受惠Alphabet 800億AI資本支出計畫，AI基礎建設景氣由GPU單點擴散至光通訊、CPO、ASIC與CPU供應鏈；另一方面，PCE年增率升至3.8%、Q1 GDP下修至1.6%、美債30年期殖利率逼近5.2%創2007年新高，市場正式進入「Higher for Longer」並有部分官員轉鷹。6/5非農、6/16-17 FOMC新主席Warsh首場主持、6/12 SpaceX IPO三大事件將是本月關鍵分水嶺，投資人應在追逐AI報酬與防守通膨利率風險間維持彈性。</p>
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">主要投資機會</div>
+      <div style="display:flex;align-items:flex-start;gap:9px;padding:9px 14px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:13px;color:#334155;line-height:1.5;margin-bottom:7px"><span style="color:#3b82f6;font-weight:800;flex-shrink:0;margin-top:1px">→</span>AI光通訊與CPO供應鏈進入訂單放量期，建議透過半導體ETF（SOXX/SMH）與個股MRVL、AVGO逢回布局</div><div style="display:flex;align-items:flex-start;gap:9px;padding:9px 14px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:13px;color:#334155;line-height:1.5;margin-bottom:7px"><span style="color:#3b82f6;font-weight:800;flex-shrink:0;margin-top:1px">→</span>微軟自研AI模型+Agent生態擴張，MSFT短期回檔（-4.17%）提供雲端龍頭再入場機會</div><div style="display:flex;align-items:flex-start;gap:9px;padding:9px 14px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:13px;color:#334155;line-height:1.5;margin-bottom:7px"><span style="color:#3b82f6;font-weight:800;flex-shrink:0;margin-top:1px">→</span>代理式AI驅動Server CPU需求爆發（AMD將2030 TAM上修至1,200億），帶動Intel、Dell等傳統硬體評價重估</div><div style="display:flex;align-items:flex-start;gap:9px;padding:9px 14px;background:#eff6ff;border-radius:8px;border-left:3px solid #2563eb;font-size:13px;color:#334155;line-height:1.5;margin-bottom:7px"><span style="color:#3b82f6;font-weight:800;flex-shrink:0;margin-top:1px">→</span>資安需求結構性升級，PANW第三財季營收YoY+31%並上調全年展望，CIBR資安ETF為防禦+成長雙重曝險最佳選擇</div>
+    </div>
+  </div>
+
+  <div class="section" id="s2">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">2</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text)">市場環境與核心觀點</div>
+      <div style="font-size:11px;color:var(--muted)">Market Environment &amp; Core Views</div>
+    </div>
+    <div class="card" style="margin-bottom:12px">
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">宏觀環境分析</div>
+      <p style="font-size:14px;color:#334155;line-height:1.9">美國4月PCE物價年增率升至3.8%（核心3.3%），能源價格年增18.3%，通膨壓力延續，而1Q26 GDP年化季增率下修至1.6%、民間消費下修至1.4%，出現「成長放緩+通膨黏著」的尷尬組合。Fed基金利率維持3.50~3.75%，但Fed會議紀要顯示更多官員開放升息選項，市場對年底前升息與按兵不動的機率評估各半。地緣政治方面，美伊停火談判推動WTI原油單週下跌9.57%至87.36美元，但川普拒簽MOU部分條款使荷姆茲海峽通行前景再度不明。台灣主計處將2026年GDP預估大幅上修至9.64%（出口年增19.93%），AI基建需求成為台美雙方共同的成長引擎，但S&P 500本益比與費半27倍PER（3月底17倍）已顯著超過歷年均值。</p>
+    </div>
+    <div class="two-col" style="margin-bottom:12px">
+      <div class="card">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">核心觀點</div>
+        <ul class="ul-plain"><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>Fed政策路徑進入「不對稱風險」階段：通膨若持續黏著將迫使升息，但成長放緩又限制Fed出手空間，預期主席Warsh首場FOMC將以「保持彈性」基調抹去市場原預期的年內降息</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>AI資本支出仍是2026年最強盈餘催化劑，三大CSP雲端業務YoY成長28-63%、Alphabet宣布800億AI資本支出，需求面尚未見頂，但估值面已開始反映過度樂觀</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>AI產業領導權正從「GPU單點」轉向「系統級互連」，光通訊、CPO、矽光子、ASIC、Server CPU成為下一階段超額報酬集中區，MRVL與AVGO為純度最高的曝險標的</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>「Higher for Longer」延長了高股息與防禦股的相對吸引力，但傳統長天期債券因財政赤字壓力面臨評價壓抑，建議以投等債+短天期取代TLT</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>6/12 SpaceX IPO（目標估值1.75~2兆美元）將是史上最大規模IPO，預期產生750億美元募資的資金虹吸效應，可能短期排擠現有科技股流動性，6月中下旬留意被動資金再平衡</li></ul>
+      </div>
+      <div class="card">
+        <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">多頭驅動因素</div>
+        <ul class="ul-plain"><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>Marvell獲輝達在NVLink Fusion框架公開背書並指其「市值有機會達1兆美元」，單日股價飆漲32.52%驗證AI光通訊主題的爆發力</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>微軟Build 2026發表7款自研模型（350億活躍參數推理模型、128K上下文），確立Agent-first時代主導權並降低對OpenAI依賴</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>Palo Alto Networks第三財季營收30億美元YoY+31%、調升全年展望，驗證代理式AI攻擊驅動的資安需求結構性升級</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:13px;color:#334155;line-height:1.5"><span style="color:#16a34a;font-size:10px">▲ </span>費城半導體指數5月漲幅22.1%並創歷史新高10,503.7點，Coherent (+17.63%)、Lumentum (+13.72%)、HPE (+19.47%) 等光通訊與AI伺服器個股全面開花</li></ul>
+      </div>
+    </div>
+    <div class="card">
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px">資金流向分析</div>
+      <div style="background:#f8fafc;border-radius:8px;padding:14px 16px;font-size:13px;color:#334155;line-height:1.9">本週資金行為呈現「AI集中度再提高、傳統大盤分散」的兩極格局：費半ETF年至今報酬率達75-100%，AI與半導體相關ETF持續吸金，而美股融資餘額突破1.3兆美元年增50%顯示散戶槓桿明顯擴大。同時，10年期公債殖利率單週下滑12.23bp至4.44%反映避險資金回流債市，外資對台股期貨淨空單增至60,000口歷史高檔，國際資金對「漲多回測」開始作部分對沖部署。</div>
+    </div>
+  </div>
+
+  <div class="section" id="s3">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">3</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text)">重點觀測股票與 ETF</div>
+      <div style="font-size:11px;color:var(--muted)">US Markets Only · 點擊列可展開詳細資訊</div>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>代碼</th><th>名稱</th><th>方向</th><th>核心看法</th><th>推薦理由</th><th>風險</th><th>來源</th></tr></thead>
+        <tbody>
+          <tr class="tbl-group-stock"><td colspan="7">▐ &nbsp;個股 STOCKS</td></tr>
+          
+          <tr class="row-stock" onclick="toggleDetail('mrvl_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">MRVL</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">Marvell科技</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI光通訊與CPO架構純度最高曝險標的，獲輝達公開背書並進入NVLink Fusion生態系</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">FY27 EPS預估由4.1升至7.3美元（成長78%）、1.6T Coherent Optical Solution為全球首款2nm製程光收發模組將於2026下半年送樣、剛宣布併購Polariton Technologies推進3.2T及以上光學效能，目標價290美元隱含32.4%報酬</td>
+            <td><span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-mrvl_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">Marvell為AI資料中心客製化ASIC、矽光子與光學互連的領導廠商，產品涵蓋Scale-Out交換器12.8T至51.2T完整產品線，並切入CPO（共同封裝光學）51.2T Switch ASIC配16組3.2T光引擎架構。在輝達NVLink Fusion框架中被點名為核心生態夥伴，黃仁勳公開表示其市值有挑戰1兆美元潛力。近期單日股價上漲32.52%反映市場對其AI互連主題的高度認同。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+225.7%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:100%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">收盤價$290.79 (+32.52%)</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">FY26F PE 53.4倍 → FY27F 30.0倍</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">市值約1,920億美元</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-stock" onclick="toggleDetail('avgo_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">AVGO</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">博通</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI ASIC與網通雙引擎，受惠Alphabet 800億AI資本支出，本週財報為下半年AI需求關鍵指標</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">目標價460美元隱含+84.7%報酬，本週財報將檢驗AI需求延續性。Alphabet宣布800億美元AI資本支出計畫直接推升博通網通與ASIC業務，股價單週跳漲6.8%，市值已達2.0兆美元位居全球第7</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-avgo_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">博通在AI客製化ASIC市場與Marvell並列雙雄，主要客戶包括Google TPU與Meta MTIA。同時擁有頂級網通晶片業務（Tomahawk系列交換器），完整覆蓋AI資料中心的計算+互連雙重需求。VMware併購後軟體業務佔比擴大，現金流穩定且持續執行AI戰略佈局。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+38.8%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:26%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">當前價$249 / 目標價$460</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">市值2.0兆美元（全球第7）</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">Alphabet 800億AI資本支出直接受惠</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-stock" onclick="toggleDetail('msft_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">MSFT</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">微軟</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">Build 2026發表7款自研模型確立Agent-first時代主導權，短期回檔提供再入場機會</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">350億活躍參數推理模型、支援128K上下文窗口，逐步降低對OpenAI依賴並打造完整AI價值鏈。雲端業務YoY+40%延續高成長，本週股價回檔4.17%反映短期估值消化，並非基本面轉弱</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-msft_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">微軟為全球三大CSP之一，Azure雲端業務年增40%，並在2026年Build大會發表7款自研AI模型強化技術自主性。Copilot生態系從Office擴散至開發者工具、資安、產業應用全棧，目標將每個產品線轉化為Agent入口。量子晶片同步取得1,000倍效能突破，長期技術護城河深厚。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#dc2626;line-height:1;margin-bottom:8px">-6.3%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:4%;background:linear-gradient(90deg,#fca5a5,#dc2626);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">收盤價$441.31 (-4.17%)</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">雲端業務YoY +40%</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">Build 2026發表7款自研AI模型</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-stock" onclick="toggleDetail('nvda_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">NVDA</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">輝達</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI產業風向標，COMPUTEX演講確認光通訊與ASIC生態擴張，仍為核心持股</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">黃仁勳COMPUTEX演講推升AI題材，NVLink Fusion框架擴大生態夥伴並公開點名Marvell。CSP三巨頭雲端業務年增28-63%直接驅動GPU需求延續性，2026年全球AI伺服器出貨預估75,000機櫃</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-nvda_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">輝達為AI晶片絕對龍頭，GPU市佔率超過90%。Blackwell架構量產加速，並透過NVLink Fusion將生態系擴展至矽光子、客製化ASIC等鄰近領域。執行長黃仁勳5/23訪台、6/1於COMPUTEX演講確立其在AI產業話語權的不可替代性，仍是AI主題曝險的核心配置。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+18.0%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:12%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">AI伺服器2026年75,000機櫃出貨</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">費半指數5月+22.1%領漲</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">NVLink Fusion生態擴張</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-stock" onclick="toggleDetail('panw_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">PANW</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">Palo Alto Networks</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI驅動資安需求結構性升級，第三財季財報全面優於預期並上調全年展望</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">第三財季營收30億美元YoY+31%、調整後EPS高於預估、上調全年與Q4展望。代理型AI攻擊自動化複雜度提升，企業資安投入加速為長期成長核心動能</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-panw_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">Palo Alto Networks為全球資安平台龍頭，產品涵蓋網路安全、雲端安全與AI安全運維（Cortex XSIAM）。隨代理型AI攻擊複雜度升高，企業端資安預算優先級提升，公司平台化策略加速大型客戶整合採購，ARR持續高雙位數成長。財報全面優於預期驗證AI時代資安賽道的結構性成長性。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+65.7%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:44%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">第三財季營收$30億 (YoY +31%)</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">上調FY26全年展望</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">代理式AI攻擊驅動長期需求</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-stock" onclick="toggleDetail('dell_stock',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#2563eb;background:#eff6ff;padding:3px 9px;border-radius:5px;display:inline-block">DELL</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">戴爾科技</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI伺服器營收年增757%，傳統硬體龍頭迎來評價重估窗口</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">AI伺服器營收YoY+757%，管理層預期下半年硬體仍面臨供給短缺。代理式AI推動CPU需求爆發，CPU:GPU比例將從1:4-1:8接近1:1，戴爾為Server CPU與AI伺服器整機重要受惠者</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#eff6ff;color:#2563eb;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>文件提及</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-dell_stock" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#f6f9ff">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">公司簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">戴爾為全球Server與PC龍頭，受惠AI伺服器需求爆發，最新季度AI伺服器營收YoY成長757%並持續累積積壓訂單。在企業AI部署轉向私有雲與On-Prem架構的趨勢下，戴爾整機與儲存解決方案具備差異化優勢，估值仍處於傳統硬體折扣區間，是「AI評價重估」主題的高槓桿標的。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+243.2%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:100%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">AI伺服器營收YoY +757%</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">下半年硬體供給仍短缺</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">代理式AI驅動CPU需求</li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="tbl-group-etf"><td colspan="7">▐ &nbsp;指數型基金 ETF</td></tr>
+          
+          <tr class="row-etf" onclick="toggleDetail('smh_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">SMH</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">VanEck半導體ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">費半5月+22.1%領漲市場，AI光通訊與CPO主題擴散持續推升半導體板塊</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">費城半導體指數5月漲幅22.1%創歷史新高10,503.7點，半導體ETF年至今報酬率達75-100%。SMH集中持有AI晶片與半導體設備龍頭，純度高於SOXX</td>
+            <td><span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-smh_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">SMH追蹤MVIS美國上市半導體25指數，前五大持股佔比超過50%，為市值加權型半導體ETF。在AI資本支出延續、光通訊架構轉型、CPU需求爆發三重驅動下，持股組合對AI主題曝險度極高，但同時也意味著費半本益比已升至27倍超過歷年均值，回檔風險不容忽視。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+69.4%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:46%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">NVDA</span><span style="color:#64748b;font-size:11px;margin-left:6px">NVIDIA Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">18.1%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:100%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">TSM</span><span style="color:#64748b;font-size:11px;margin-left:6px">Taiwan Semiconductor Manufacturing Co Ltd ADR</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">10.6%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:71%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AVGO</span><span style="color:#64748b;font-size:11px;margin-left:6px">Broadcom Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.8%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:52%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">INTC</span><span style="color:#64748b;font-size:11px;margin-left:6px">Intel Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.1%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:47%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AMD</span><span style="color:#64748b;font-size:11px;margin-left:6px">Advanced Micro Devices Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">6.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:40%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('soxx_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">SOXX</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">iShares半導體ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">更均衡的半導體曝險，CPU+GPU+ASIC+設備全覆蓋，適合分散個股風險</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">AMD將2030年Server CPU TAM上修至1,200億美元（原600億），SOXX對AMD、Intel等CPU廠商曝險高於SMH，可同時受惠代理式AI驅動的CPU需求爆發</td>
+            <td><span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-soxx_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">SOXX追蹤ICE半導體指數，成份股約30檔，相對SMH更為均衡分散，並對網通晶片、CPU、半導體設備廠的曝險較高。在AI主題從GPU擴散至CPU與光通訊的轉折期，SOXX的均衡配置能更全面捕捉AI基礎建設升級紅利。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+93.0%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:62%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AMD</span><span style="color:#64748b;font-size:11px;margin-left:6px">Advanced Micro Devices Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:53%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AVGO</span><span style="color:#64748b;font-size:11px;margin-left:6px">Broadcom Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.9%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:53%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">MU</span><span style="color:#64748b;font-size:11px;margin-left:6px">Micron Technology Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.6%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:51%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">NVDA</span><span style="color:#64748b;font-size:11px;margin-left:6px">NVIDIA Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">6.8%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:45%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">INTC</span><span style="color:#64748b;font-size:11px;margin-left:6px">Intel Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">6.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:42%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('qqq_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">QQQ</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">Invesco納斯達克100 ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">AI七巨頭核心曝險，受惠CSP雲端業務YoY +28~63%爆發性成長</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">Alphabet 63%、Microsoft 40%、Amazon 28%雲端業務YoY大爆發直接推升QQQ主要持股EPS。S&P 500 1Q26有84%企業獲利優於預期，納指動能更強</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-qqq_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">QQQ為追蹤納斯達克100指數的旗艦ETF，重押微軟、蘋果、輝達、Google、亞馬遜、Meta等AI主題核心受惠標的。當前納指走勢由CSP雲端業務爆發與AI Capex擴張同步推動，是參與美股AI浪潮最簡潔有效的核心配置工具。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+21.9%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:15%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">NVDA</span><span style="color:#64748b;font-size:11px;margin-left:6px">NVIDIA Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.5%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:57%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AAPL</span><span style="color:#64748b;font-size:11px;margin-left:6px">Apple Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:47%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">MSFT</span><span style="color:#64748b;font-size:11px;margin-left:6px">Microsoft Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">5.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:35%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AMZN</span><span style="color:#64748b;font-size:11px;margin-left:6px">Amazon.com Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">5.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:33%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">GOOGL</span><span style="color:#64748b;font-size:11px;margin-left:6px">Alphabet Inc Class A</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">3.9%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:26%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('cibr_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">CIBR</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">First Trust Nasdaq資安ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">代理型AI攻擊複雜度提升驅動企業資安預算結構性擴大，PANW財報驗證主題強度</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">PANW第三財季營收YoY+31%並上調全年展望驗證資安需求強勁，代理型AI自動化攻擊複雜度提升推動企業資安投入加速，為產業長期成長核心動能</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-cibr_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">CIBR追蹤Nasdaq CTA Cybersecurity指數，前五大持股集中於資安平台龍頭與雲端安全廠商。在AI同時驅動攻擊與防禦升級的「Cyber Arms Race」背景下，企業資安預算優先級僅次於AI Capex本身，是兼具防禦性與AI主題曝險的少數標的。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+33.7%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:22%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AVGO</span><span style="color:#64748b;font-size:11px;margin-left:6px">Broadcom Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">9.6%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:64%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">PANW</span><span style="color:#64748b;font-size:11px;margin-left:6px">Palo Alto Networks Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.8%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:59%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">CRWD</span><span style="color:#64748b;font-size:11px;margin-left:6px">CrowdStrike Holdings Inc Class A</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.8%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:59%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">CSCO</span><span style="color:#64748b;font-size:11px;margin-left:6px">Cisco Systems Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.4%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:56%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">FTNT</span><span style="color:#64748b;font-size:11px;margin-left:6px">Fortinet Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">7.1%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:47%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('skyy_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">SKYY</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">First Trust雲端運算ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">三大CSP雲端業務YoY+28~63%爆發，Agent-first時代雲端需求進入新一輪上行週期</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">Alphabet 63%、Microsoft 40%、Amazon 28%雲端業務YoY成長，Alphabet宣布800億AI資本支出計畫，雲端基礎建設投入持續推升SKYY核心持股業績</td>
+            <td><span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-skyy_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">SKYY追蹤ISE雲端運算指數，覆蓋雲端基礎建設、雲端軟體即服務（SaaS）以及雲端應用三大層級。在AI模型訓練與推論需求驅動下，雲端服務商正進入第二波超大規模Capex擴張週期，SKYY為參與此趨勢相對均衡的選擇。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+19.8%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:13%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">ANET</span><span style="color:#64748b;font-size:11px;margin-left:6px">Arista Networks Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.4%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:29%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AMZN</span><span style="color:#64748b;font-size:11px;margin-left:6px">Amazon.com Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:29%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">GOOGL</span><span style="color:#64748b;font-size:11px;margin-left:6px">Alphabet Inc Class A</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.2%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:28%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">CRWV</span><span style="color:#64748b;font-size:11px;margin-left:6px">CoreWeave Inc Ordinary Shares - Class A</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:27%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">DOCN</span><span style="color:#64748b;font-size:11px;margin-left:6px">DigitalOcean Holdings Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:27%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('schd_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">SCHD</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">Schwab美國高股息ETF</td>
+            <td><span style="color:#64748b;font-weight:700;white-space:nowrap">◆ 中性</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">Higher for Longer延長期間，高股息防禦標的相對吸引力提升</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">美債30年期殖利率逼近5.2%創2007年新高，市場進入「Higher for Longer」確立階段，SCHD篩選穩定股息與健康現金流企業，提供波動緩衝與穩定殖利率</td>
+            <td><span style="background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">低</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-schd_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">SCHD追蹤Dow Jones美國股息100指數，篩選具備至少10年穩定派息歷史、現金流健康的優質企業，前五大持股包括醫療、必需消費、能源等防禦性板塊。當市場進入升息預期再起的階段，這類具備護城河與穩定派息的標的能有效降低組合波動，是積極型組合的下檔保護。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+17.7%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:12%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">TXN</span><span style="color:#64748b;font-size:11px;margin-left:6px">Texas Instruments Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">5.4%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:36%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">UNH</span><span style="color:#64748b;font-size:11px;margin-left:6px">UnitedHealth Group Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">5.1%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:34%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">QCOM</span><span style="color:#64748b;font-size:11px;margin-left:6px">Qualcomm Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:29%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">CVX</span><span style="color:#64748b;font-size:11px;margin-left:6px">Chevron Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.2%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:28%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">COP</span><span style="color:#64748b;font-size:11px;margin-left:6px">ConocoPhillips</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">4.1%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:27%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('vym_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">VYM</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">Vanguard高股息收益ETF</td>
+            <td><span style="color:#64748b;font-weight:700;white-space:nowrap">◆ 中性</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">通膨黏著+Fed可能升息環境下，價值股+高股息為防禦性配置的核心</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">PCE年增3.8%延續、5月PCE可能升至3.99%，通膨黏著環境下價值股相對成長股估值優勢擴大。VYM股息殖利率約3%且涵蓋金融、醫療、必需消費等多元防禦板塊</td>
+            <td><span style="background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">低</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-vym_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">VYM追蹤FTSE高股息收益指數，覆蓋約400檔高股息美股，分散度高於SCHD，涵蓋金融、醫療、能源、必需消費等防禦性板塊。費用比率僅0.06%，是長期配置的低成本選擇，能在科技股回檔時提供組合穩定性。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+12.0%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:8%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">前五大持股</div><ul style="list-style:none">
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">AVGO</span><span style="color:#64748b;font-size:11px;margin-left:6px">Broadcom Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">8.0%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:53%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">JPM</span><span style="color:#64748b;font-size:11px;margin-left:6px">JPMorgan Chase & Co</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">3.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:22%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">XOM</span><span style="color:#64748b;font-size:11px;margin-left:6px">Exxon Mobil Corp</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">2.7%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:18%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">JNJ</span><span style="color:#64748b;font-size:11px;margin-left:6px">Johnson & Johnson</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">2.3%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:15%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li>
+                <li style="display:flex;align-items:center;justify-content:space-between;padding:6px 10px;background:#fff;border-radius:7px;border:1px solid #e2e8f0;font-size:12px;margin-bottom:5px">
+                  <span><span style="font-family:'SF Mono','Courier New',monospace;font-weight:700;color:#92400e;font-size:12px">CAT</span><span style="color:#64748b;font-size:11px;margin-left:6px">Caterpillar Inc</span></span>
+                  <div style="display:flex;align-items:center;gap:6px">
+                    <span style="font-size:11px;font-weight:700;color:#d97706">1.7%</span>
+                    <div style="width:50px;height:4px;background:#e2e8f0;border-radius:2px;overflow:hidden"><div style="height:100%;width:11%;background:linear-gradient(90deg,#fde68a,#d97706);border-radius:2px"></div></div>
+                  </div>
+                </li></ul></div>
+              </div>
+            </td>
+          </tr>
+          <tr class="row-etf" onclick="toggleDetail('gld_etf',this)">
+            <td><span style="font-family:'SF Mono','Courier New',monospace;font-weight:800;font-size:13px;color:#92400e;background:#fef3c7;padding:3px 9px;border-radius:5px;display:inline-block">GLD</span><span class="chevron" style="font-size:11px;color:#94a3b8;transition:transform .2s;margin-left:6px;vertical-align:middle">›</span></td>
+            <td style="font-size:13px;color:#1e293b;white-space:nowrap;font-weight:500">SPDR黃金ETF</td>
+            <td><span style="color:#16a34a;font-weight:700;white-space:nowrap">▲ 偏多</span></td>
+            <td style="font-size:12px;color:#64748b;max-width:180px;line-height:1.55">通膨黏著+地緣政治反覆+美元中性區間，黃金作為組合對沖工具</td>
+            <td style="font-size:12px;color:#64748b;max-width:250px;line-height:1.6">黃金價格4,560美元年增37.48%，美伊談判反覆使地緣風險再起，且若Fed升息預期不如預期實現，黃金將同時受惠於通膨對沖與地緣避險需求</td>
+            <td><span style="background:#dcfce7;color:#15803d;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">低</span></td>
+            <td><span style='background:#f5f3ff;color:#7c3aed;padding:2px 7px;border-radius:4px;font-size:10px;font-weight:700'>延伸推導</span></td>
+          </tr>
+          <tr class="detail-row" id="detail-gld_etf" style="display:none">
+            <td colspan="7" style="padding:0;border-bottom:2px solid #cbd5e1">
+              <div style="padding:16px 20px 20px 36px;display:grid;grid-template-columns:2fr 1fr 1.5fr;gap:16px;background:#fefce8">
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">基金簡介</div>
+                  <div style="font-size:13px;color:#334155;line-height:1.75">GLD為全球規模最大的實物黃金ETF，直接持有金條作為對沖通膨與地緣風險的工具。當前環境包含通膨黏著、Fed政策不確定、中東局勢反覆、SpaceX IPO可能引發科技股流動性調整等多重不確定因素，建議將黃金作為組合波動緩衝。</div>
+                </div>
+                <div>
+                  <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">YTD 漲幅</div>
+                  <div style="font-size:26px;font-weight:800;color:#16a34a;line-height:1;margin-bottom:8px">+3.4%</div>
+<div style="height:6px;background:#e2e8f0;border-radius:3px;overflow:hidden;margin-bottom:5px">
+  <div style="height:100%;width:2%;background:linear-gradient(90deg,#4ade80,#16a34a);border-radius:3px"></div>
+</div>
+<div style="font-size:11px;color:#64748b">2026 年至今</div>
+                </div>
+                <div><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:8px">關鍵數據</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px"><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">金價$4,560/盎司 YoY +37.48%</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">地緣風險與通膨雙重對沖</li><li style="padding:7px 11px;background:#fff;border:1px solid #e2e8f0;border-radius:7px;font-size:12px;color:#334155">費用比率0.40%</li></ul></div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section" id="s4">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">4</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text)">整體投資策略</div>
+      <div style="font-size:11px;color:var(--muted)">Investment Strategy</div>
+    </div>
+    <div class="strat-grid">
+      <div class="card" style="border-top:3px solid #dc2626">
+        <div style="font-size:15px;font-weight:800;color:#dc2626;margin-bottom:8px">🔥 積極型策略</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.7;margin-bottom:14px">積極型策略聚焦於「AI基礎建設第二波擴散」主題：互連、CPO、ASIC、Server CPU、資安等次級主題尚未充分反映於估值，且光通訊與代理式AI的訂單能見度延伸至2027年。但需接受費半27倍PER、融資餘額創新高以及SpaceX IPO虹吸效應可能引發10-15%回檔的短期波動風險。</div>
+        <div style="display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;background:#fef2f2;color:#dc2626;margin-bottom:14px">70% AI主題（半導體+AI光通訊+雲端）/ 20% 高股息防禦 / 10% 黃金對沖</div>
+        <ul class="ul-plain" style="gap:7px"><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#dc2626;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>SMH 20%：半導體核心曝險，捕捉AI晶片+設備全鏈條紅利</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#dc2626;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>MRVL 15%：光通訊純度最高曝險，目標價隱含+32.4%報酬</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#dc2626;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>AVGO 12%：ASIC+網通雙引擎，本週財報為下半年AI需求催化劑</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#dc2626;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>QQQ 13%：CSP雲端業務YoY+28~63%驅動的核心配置</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#dc2626;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>CIBR 10%：資安賽道結構性成長，PANW財報驗證主題強度，5支持倉中唯一純防禦性AI主題</li></ul>
+      </div>
+      <div class="card" style="border-top:3px solid #16a34a">
+        <div style="font-size:15px;font-weight:800;color:#16a34a;margin-bottom:8px">🛡️ 保守型策略</div>
+        <div style="font-size:13px;color:#64748b;line-height:1.7;margin-bottom:14px">保守型策略以「定期定額參與AI」加上「高股息+黃金構築護城河」為主軸，避免單押高估值AI個股，而是透過ETF分散風險。在Fed政策路徑不明、SpaceX IPO虹吸與通膨黏著三重不確定下，犧牲部分上漲彈性換取下檔保護與穩定現金流。</div>
+        <div style="display:inline-block;padding:4px 12px;border-radius:20px;font-size:11px;font-weight:700;background:#f0fdf4;color:#16a34a;margin-bottom:14px">40% AI主題ETF / 40% 高股息防禦 / 10% 黃金 / 10% 現金等待</div>
+        <ul class="ul-plain" style="gap:7px"><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#16a34a;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>SCHD 20%：高股息防禦核心，10年穩定派息篩選，降低組合Beta</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#16a34a;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>QQQ 15%：透過大盤ETF參與AI而非單壓個股，降低單一風險</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#16a34a;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>VYM 15%：分散度更高的高股息曝險，金融+醫療+必需消費三重防禦</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#16a34a;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>SOXX 15%：較SMH更均衡的半導體曝險，分散個股集中風險</li><li style="padding:9px 13px;background:#f8fafc;border-radius:8px;font-size:12px;color:#334155;line-height:1.5;display:flex;align-items:flex-start;gap:8px"><span style="color:#16a34a;font-size:10px;flex-shrink:0;margin-top:2px">◎</span>GLD 10% + 現金10%：保留10%現金應對6/5非農、6/16 FOMC、6/12 SpaceX IPO三大事件後的可能回檔布局</li></ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="s5">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+      <div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">5</div>
+      <div style="font-size:16px;font-weight:800;color:var(--text)">關鍵風險提示</div>
+      <div style="font-size:11px;color:var(--muted)">Key Risk Alerts</div>
+    </div>
+    <div class="risks-grid"><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #dc2626">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#dc2626">⚠ 影響: 高 ／ 機率: 中</span>
+            <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">Fed政策轉鷹風險：Fed會議紀要顯示更多官員開放升息選項，6/16-17 FOMC新主席Warsh首場主持可能抹去原預期年內降息，若點陣圖意外鷹派，將同時打擊高估值AI股與長天期債券，引發股債同步修正</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 降低長天期債券曝險（避免TLT），提高短天期投等債與SCHD/VYM等高股息ETF配置，FOMC會議前一週將部位降至目標配置80%保留現金子彈</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #dc2626">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#dc2626">⚠ 影響: 高 ／ 機率: 中</span>
+            <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">AI估值泡沫修正風險：費半本益比已從3月底17倍升至27倍超歷年均值，美股融資餘額突破1.3兆美元年增50%，散戶槓桿擴大將放大回檔幅度，若AI Capex任一龍頭釋出疑慮，可能引發20%以上技術性修正</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 AI主題單一個股部位不超過組合15%，透過SMH/SOXX/QQQ等ETF分散標的風險，逢回再分批加碼而非追高，設定個股-12%技術性停損</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #d97706">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#d97706">⚠ 影響: 中 ／ 機率: 中</span>
+            <span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">地緣政治反覆風險：川普拒簽美伊MOU部分條款使荷姆茲海峽通行前景再度不明，若油價快速彈升至100美元以上將推升通膨預期並再啟升息壓力，能源價格年增18.3%已是先行警訊</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 配置GLD作為地緣風險對沖，避開高度依賴石化原料的化工股，可考慮XLE能源ETF作為對沖型衛星配置（5-10%）</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #d97706">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#d97706">⚠ 影響: 中 ／ 機率: 高</span>
+            <span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">SpaceX IPO流動性虹吸風險：預計6/12掛牌、目標估值1.75~2兆美元、預期募資750億美元，為史上最大規模IPO，預期將排擠既有科技股流動性並引發被動資金再平衡，6月中下旬科技股可能短期承壓</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 6/10前將科技股部位降至目標配置85%以下，保留現金等待IPO後可能出現的科技股技術性修正再分批進場，避免追漲SPCX上市首日</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #d97706">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#d97706">⚠ 影響: 中 ／ 機率: 中</span>
+            <span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">美國經濟成長失速風險：1Q26 GDP下修至1.6%、民間消費下修至1.4%、儲蓄率由4.3%跌至2.6%、密大消費信心指數44.8創新低，若5月非農低於8.9萬人預期，市場將擔憂硬著陸</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 降低高景氣循環股（如DELL等硬體）部位，提高必需消費（KO/PEP）與醫療（JNJ）等防禦板塊比重，並透過SCHD與VYM獲取穩定派息對沖成長放緩</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #dc2626">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#dc2626">⚠ 影響: 高 ／ 機率: 中</span>
+            <span style="background:#fee2e2;color:#991b1b;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">高</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">通膨二次反彈風險：PCE年增率連2個月上升至3.8%，克里夫蘭Fed預估5月將達3.99%，若薪資增長維持高位將被視為「二輪通膨」訊號，Fed可能被迫升息，直接衝擊高估值科技股</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 提高黃金（GLD）配置至10%對沖通膨，避免長天期債券曝險，6/5非農薪資數據若超預期3.4%則啟動防禦性減碼</div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px 20px;box-shadow:0 1px 3px rgba(0,0,0,.04);border-left:4px solid #d97706">
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+            <span style="font-size:11px;font-weight:700;color:#d97706">⚠ 影響: 中 ／ 機率: 高</span>
+            <span style="background:#fef9c3;color:#854d0e;padding:2px 8px;border-radius:4px;font-size:10px;font-weight:700">中</span>
+          </div>
+          <div style="font-size:13px;color:#334155;line-height:1.65;margin-bottom:12px">中國經濟疲弱拖累全球供應鏈風險：5月中國官方製造業PMI降至50.0、新訂單48.6、新出口訂單48.6創低，水泥產量年減7.1%顯示房地產調整未止，可能拖累全球科技供應鏈與大宗商品需求</div>
+          <div style="font-size:12px;color:#64748b;background:#f8fafc;padding:8px 12px;border-radius:7px;line-height:1.6">📋 降低對中國市場曝險高的個股，AI主題優先選擇北美需求驅動標的（如MSFT、AVGO、PANW），避免過度集中於中國消費鏈</div>
+        </div></div>
+  </div>
+
+  <div class="section" id="s6"><div style="display:flex;align-items:center;gap:10px;margin-bottom:16px"><div style="width:24px;height:24px;border-radius:6px;background:#2563eb;color:#fff;font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0">6</div><div style="font-size:16px;font-weight:800;color:var(--text)">最新相關資訊</div><div style="font-size:11px;color:var(--muted)">搜尋自各大財經媒體</div></div><div class="news-grid"><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Semiconductor Engineering · Wed, 03 Jun 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">1 Megawatt Racks In Data Centers - Semiconductor Engineering</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Pandaily · Wed, 03 Jun 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">Co-Packaged Optics: The Interconnect Backbone for AI Data Centers - Pandaily</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Stock Titan · Tue, 02 Jun 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">AI data center optical links target $25B market by 2030 - Stock Titan</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Yahoo Finance · Thu, 28 May 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">When is the Fed's next meeting? See the full schedule for 2026. - Yahoo Finance</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Reuters · Wed, 20 May 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">Fed minutes show more policymakers open to a rate hike - Reuters</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Fortune · Mon, 01 Jun 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">Top CD rates on June 1, 2026: Lock in up to up to 4.30% - Fortune</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            TradingKey · Sat, 30 May 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">U.S. May Nonfarm Payrolls Preview: Can the Labor Market Open the Door to Rate Cuts? Gold, Dollar, U.S. Stocks Face Key Test - TradingKey</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            Morningstar · Wed, 11 Feb 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">January US Jobs Report: 130,000 Rise In Payrolls Beats Forecasts - Morningstar</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div><div style="background:#fff;border:1px solid #e2e8f0;border-radius:10px;padding:15px 16px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+          <div style="font-size:10px;color:#94a3b8;margin-bottom:6px;display:flex;align-items:center;gap:6px">
+            <span style="width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0;display:inline-block"></span>
+            The Budget Lab · Wed, 01 Apr 2026
+          </div>
+          <div style="font-size:13px;font-weight:600;color:#2563eb;margin-bottom:7px;line-height:1.5">Tracking the Economic Effects of Tariffs - The Budget Lab</div>
+          <div style="font-size:12px;color:#64748b;line-height:1.55"></div>
+        </div></div></div>
+
+</div></div>
+
+<div class="footer">
+  <div style="margin-bottom:4px">⚠ 本報告由 AI 自動分析生成，<strong>僅供參考，不構成投資建議</strong>。過去績效不代表未來表現，投資有風險，決策請審慎評估。</div>
+  <div>Investment War Room · 2026 年 06 月 03 日 17:28 · 來源：<span style="color:#2563eb">20260601_本周關注就業、PMI、停火進展及AI需求延續性.pdf、20260603_FuBon_美股日報.pdf、2026年6月產業投資策略_Strategy_c_052926.pdf、事件分析_Marvell Computex_20260602.pdf、富邦市場展望060326.pdf、總經與投資週報_060126.pdf</span></div>
+</div>
+
+<script>
+function toggleDetail(id, tr) {
+  var det = document.getElementById('detail-' + id);
+  if (!det) return;
+  var isOpen = det.style.display === 'table-row';
+  // close all
+  document.querySelectorAll('.detail-row').forEach(function(r){ r.style.display='none'; });
+  document.querySelectorAll('.row-stock.expanded,.row-etf.expanded').forEach(function(r){ r.classList.remove('expanded'); });
+  if (!isOpen) {
+    det.style.display = 'table-row';
+    tr.classList.add('expanded');
+    setTimeout(function(){ det.scrollIntoView({behavior:'smooth',block:'nearest'}); }, 60);
+  }
+}
+const sections = document.querySelectorAll('.section[id]');
+const navLinks  = document.querySelectorAll('.nav-link');
+new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      navLinks.forEach(function(a){ a.classList.remove('active'); });
+      var l = document.querySelector('.nav-link[href="#'+e.target.id+'"]');
+      if(l) l.classList.add('active');
+    }
+  });
+}, {rootMargin:'-88px 0px -60% 0px', threshold:0}).observe && sections.forEach(function(s){ new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ navLinks.forEach(function(a){ a.classList.remove('active'); }); var l=document.querySelector('.nav-link[href="#'+e.target.id+'"]'); if(l) l.classList.add('active'); }}); },{rootMargin:'-88px 0px -60% 0px',threshold:0}).observe(s); });
+</script>
+</body>
+</html>

@@ -1,0 +1,1146 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>美股投資戰情表 | 示意版</title>
+  <style>
+    :root {
+      --bg: #f4f6f8;
+      --panel: #ffffff;
+      --ink: #18212f;
+      --muted: #677386;
+      --line: #dbe2ea;
+      --accent: #0f766e;
+      --accent-soft: #dff3ef;
+      --blue: #2563eb;
+      --blue-soft: #e8efff;
+      --amber: #b7791f;
+      --amber-soft: #fff3d6;
+      --red: #b42318;
+      --red-soft: #ffe7e3;
+      --green: #147d4f;
+      --green-soft: #e5f6ed;
+      --violet: #6d28d9;
+      --violet-soft: #f0e8ff;
+      --shadow: 0 16px 34px rgba(24, 33, 47, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      letter-spacing: 0;
+    }
+
+    .shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 28px 0 42px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: end;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(26px, 4vw, 42px);
+      line-height: 1.16;
+      letter-spacing: 0;
+    }
+
+    .subhead {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 760px;
+    }
+
+    .status-board {
+      min-width: 280px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      padding: 14px;
+    }
+
+    .status-board strong {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .status-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0;
+      border-top: 1px solid #eef2f6;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .status-row b {
+      color: var(--ink);
+      font-weight: 750;
+      text-align: right;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+      min-height: 104px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .metric b {
+      display: block;
+      margin-top: 8px;
+      font-size: 25px;
+      line-height: 1.1;
+    }
+
+    .metric small {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      line-height: 1.45;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.65fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    section,
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    section {
+      padding: 20px;
+      margin-bottom: 18px;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    h3 {
+      margin: 0 0 10px;
+      font-size: 15px;
+      letter-spacing: 0;
+    }
+
+    p {
+      line-height: 1.72;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .callout {
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--accent);
+      border-radius: 8px;
+      padding: 14px;
+      background: #fbfdfc;
+    }
+
+    .callout.warning {
+      border-left-color: var(--amber);
+      background: #fffdf8;
+    }
+
+    .callout p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: var(--blue-soft);
+      color: #1e4fb8;
+      font-size: 12px;
+      font-weight: 750;
+      white-space: nowrap;
+    }
+
+    .tag.green {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .tag.amber {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .sources {
+      display: grid;
+      gap: 10px;
+    }
+
+    .source {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fbfcfe;
+    }
+
+    .source .name {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .source p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .flow {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .flow-step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 10px;
+      align-items: start;
+    }
+
+    .num {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .flow-step b {
+      color: var(--ink);
+    }
+
+    .view-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .view-tabs button {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--muted);
+      border-radius: 8px;
+      padding: 8px 11px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .view-tabs button.active {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+      color: var(--accent);
+    }
+
+    .view-tabs button:focus-visible {
+      outline: 3px solid rgba(15, 118, 110, 0.22);
+      outline-offset: 2px;
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      overflow: hidden;
+      border-radius: 8px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 10px;
+      text-align: left;
+      vertical-align: top;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    th {
+      background: #eef3f8;
+      color: #435064;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .ticker {
+      display: block;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .company {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .score {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 66px;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-weight: 850;
+      font-size: 12px;
+    }
+
+    .score.buy {
+      background: var(--green-soft);
+      color: var(--green);
+    }
+
+    .score.watch {
+      background: var(--amber-soft);
+      color: var(--amber);
+    }
+
+    .bar {
+      width: 100%;
+      height: 8px;
+      background: #e7ecf2;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-top: 8px;
+    }
+
+    .bar i {
+      display: block;
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--blue));
+    }
+
+    .strategy-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .customer-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .segment-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      background: #fbfcfe;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .segment-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .segment-head b {
+      display: block;
+      font-size: 16px;
+      line-height: 1.35;
+    }
+
+    .segment-head span {
+      color: var(--muted);
+      display: block;
+      margin-top: 3px;
+      font-size: 12px;
+    }
+
+    .fit {
+      display: inline-flex;
+      justify-content: center;
+      min-width: 64px;
+      border-radius: 999px;
+      background: var(--violet-soft);
+      color: var(--violet);
+      padding: 4px 8px;
+      font-size: 12px;
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    .script-box {
+      border-radius: 8px;
+      background: #f3f7fb;
+      padding: 12px;
+      color: #334155;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .script-box strong {
+      color: var(--ink);
+    }
+
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .action-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px;
+      background: #fff;
+      min-height: 116px;
+    }
+
+    .action-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 13px;
+    }
+
+    .action-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .strategy {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px;
+      background: #fbfcfe;
+    }
+
+    .strategy.aggressive {
+      border-top: 4px solid var(--blue);
+    }
+
+    .strategy.conservative {
+      border-top: 4px solid var(--accent);
+    }
+
+    ul {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 14px;
+    }
+
+    .risk-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .risk {
+      border: 1px solid #ffd0c8;
+      background: var(--red-soft);
+      border-radius: 8px;
+      padding: 13px;
+    }
+
+    .risk strong {
+      color: var(--red);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .risk span {
+      color: #7f3a33;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.65;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 900px) {
+      .topbar,
+      .grid,
+      .summary,
+      .strategy-grid,
+      .customer-grid,
+      .action-grid,
+      .risk-list {
+        grid-template-columns: 1fr;
+      }
+
+      .metric-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .status-board {
+        min-width: 0;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 18px;
+      }
+
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 15px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+      }
+
+      th,
+      td {
+        min-width: 138px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">DEMO REPORT · 假資料示意版</p>
+        <h1>美股投資戰情表</h1>
+        <p class="subhead">每日 09:30 讀取 /Users/marine/Desktop/input 文件，萃取核心觀點與關鍵字，串接新聞佐證後輸出可執行的美股投資策略，並依客戶態樣產生分群、切入重點與理專話術。</p>
+      </div>
+      <aside class="status-board">
+        <strong>今日排程狀態</strong>
+        <div class="status-row"><span>讀檔時間</span><b>09:30 Asia/Taipei</b></div>
+        <div class="status-row"><span>文件數</span><b>6 份</b></div>
+        <div class="status-row"><span>新聞佐證</span><b>Reuters / Bloomberg / 鉅亨網</b></div>
+        <div class="status-row"><span>客群模型</span><b>3 類客群 / 4 組話術</b></div>
+        <div class="status-row"><span>報告版本</span><b>2026-07-09 Demo</b></div>
+      </aside>
+    </header>
+
+    <div class="metric-grid" aria-label="市場指標">
+      <div class="metric">
+        <span>市場基調</span>
+        <b>偏多</b>
+        <small>AI 資本支出與企業財報韌性支撐風險偏好。</small>
+      </div>
+      <div class="metric">
+        <span>資金流向</span>
+        <b>科技回流</b>
+        <small>半導體、雲端基建、電力設備 ETF 淨流入升溫。</small>
+      </div>
+      <div class="metric">
+        <span>短線關鍵</span>
+        <b>CPI / FOMC</b>
+        <small>利率預期仍是估值上緣的主要變數。</small>
+      </div>
+      <div class="metric">
+        <span>風險分數</span>
+        <b>中等</b>
+        <small>追價風險提高，宜以分批與停損控管。</small>
+      </div>
+      <div class="metric">
+        <span>適配客群</span>
+        <b>成長型</b>
+        <small>優先推送給美股科技持倉、ETF 定期定額與高互動客戶。</small>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div>
+        <section>
+          <h2>執行摘要</h2>
+          <div class="summary">
+            <div class="callout">
+              <h3>核心判斷</h3>
+              <p>假資料顯示市場維持「成長股領先、景氣循環股補漲」結構。AI 基建需求仍是主軸，但短線漲幅已大，資金開始尋找第二層供應鏈與電力基建標的。</p>
+              <div class="tag-row">
+                <span class="tag green">AI 基建</span>
+                <span class="tag">半導體設備</span>
+                <span class="tag amber">利率敏感</span>
+              </div>
+            </div>
+            <div class="callout warning">
+              <h3>今日行動</h3>
+              <p>積極型可聚焦回測季線後轉強的 AI 與雲端供應鏈；保守型以大型 ETF、獲利穩定與現金流充足標的為主，降低單一個股波動。</p>
+              <div class="tag-row">
+                <span class="tag green">分批布局</span>
+                <span class="tag">ETF 核心倉</span>
+                <span class="tag amber">不追高</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>市場環境與核心觀點</h2>
+          <div class="view-tabs" role="tablist" aria-label="市場觀點切換">
+            <button class="active" type="button" role="tab" aria-selected="true" data-tab-target="market-bull">多頭看法</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="market-flow">資金流向</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="market-news">新聞佐證</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="market-industry">產業推導</button>
+          </div>
+          <div class="tab-panel active" id="market-bull">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 18%;">主題</th>
+                  <th>文件重點</th>
+                  <th>外部佐證方向</th>
+                  <th style="width: 18%;">投資含意</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>AI 資本支出</b></td>
+                  <td>雲端巨頭持續擴張資料中心，GPU 與高速網通需求延續。</td>
+                  <td>追蹤路透與 Bloomberg 對大型雲端業者 capex、供應鏈交期的報導。</td>
+                  <td><span class="score buy">偏多</span></td>
+                </tr>
+                <tr>
+                  <td><b>資金輪動</b></td>
+                  <td>資金從大型科技延伸至電力設備、散熱、ASIC 與記憶體。</td>
+                  <td>比對 ETF 淨流入與產業訂單新聞，確認是否由題材轉為基本面。</td>
+                  <td><span class="score buy">加碼觀察</span></td>
+                </tr>
+                <tr>
+                  <td><b>利率環境</b></td>
+                  <td>降息預期支撐成長股估值，但通膨數據可能造成波動。</td>
+                  <td>觀察 CPI、非農與 Fed 官員談話對十年期美債殖利率影響。</td>
+                  <td><span class="score watch">控管部位</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-panel" id="market-flow">
+            <table>
+              <thead>
+                <tr>
+                  <th style="width: 22%;">資金方向</th>
+                  <th>觀察訊號</th>
+                  <th>偏好標的</th>
+                  <th style="width: 18%;">解讀</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>大型科技回流</b></td>
+                  <td>假資料顯示 QQQ 與半導體 ETF 成交量升溫。</td>
+                  <td>NVDA、AVGO、MSFT、QQQ</td>
+                  <td><span class="score buy">順勢</span></td>
+                </tr>
+                <tr>
+                  <td><b>AI 第二層供應鏈</b></td>
+                  <td>資金從 GPU 龍頭外溢至網通、散熱、電力設備。</td>
+                  <td>VRT、ANET、ETN、SMH</td>
+                  <td><span class="score buy">擴散</span></td>
+                </tr>
+                <tr>
+                  <td><b>防禦資金</b></td>
+                  <td>高估值震盪時，公用事業與大型指數 ETF 吸引保守資金。</td>
+                  <td>XLU、VOO、SPLG</td>
+                  <td><span class="score watch">平衡</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-panel" id="market-news">
+            <div class="sources">
+              <div class="source">
+                <div class="name"><span>Reuters</span><span>佐證方向</span></div>
+                <p>追蹤雲端業者資本支出、資料中心擴建與先進晶片供應限制，確認 AI 需求是否延續。</p>
+              </div>
+              <div class="source">
+                <div class="name"><span>Bloomberg</span><span>佐證方向</span></div>
+                <p>檢查華爾街對 AI 龍頭獲利預估、估值敏感度與大型資金調倉評論。</p>
+              </div>
+              <div class="source">
+                <div class="name"><span>鉅亨網</span><span>佐證方向</span></div>
+                <p>補充半導體、電力設備與台灣供應鏈新聞，整理理專可使用的中文摘要。</p>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="market-industry">
+            <div class="strategy-grid">
+              <div class="strategy aggressive">
+                <h3>可能受惠鏈</h3>
+                <ul>
+                  <li>GPU 與 ASIC：AI 訓練與推論需求延續。</li>
+                  <li>網通與光通訊：資料中心東西向流量增加。</li>
+                  <li>電力與散熱：機櫃功耗提升帶動基建升級。</li>
+                </ul>
+              </div>
+              <div class="strategy conservative">
+                <h3>配置邏輯</h3>
+                <ul>
+                  <li>積極型客戶看成長彈性與產業擴散。</li>
+                  <li>穩健型客戶以 ETF 參與主題，降低個股風險。</li>
+                  <li>防禦型客戶以大型指數與公用事業平衡波動。</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>重點觀測股票與 ETF（只看美股）</h2>
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 15%;">代號</th>
+                <th>核心看法</th>
+                <th style="width: 22%;">催化因素</th>
+                <th style="width: 16%;">建議</th>
+                <th style="width: 16%;">信心度</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="ticker">NVDA</span><span class="company">NVIDIA</span></td>
+                <td>AI GPU 與網通平台仍為資料中心升級核心，短線需留意估值與財報預期過熱。</td>
+                <td>雲端 capex、Blackwell 供應鏈、毛利率</td>
+                <td><span class="score buy">回檔布局</span></td>
+                <td>高<div class="bar"><i style="width: 86%;"></i></div></td>
+              </tr>
+              <tr>
+                <td><span class="ticker">AVGO</span><span class="company">Broadcom</span></td>
+                <td>ASIC、網通晶片與企業軟體現金流兼具，適合作為 AI 供應鏈第二層配置。</td>
+                <td>ASIC 訂單、雲端客戶擴產</td>
+                <td><span class="score buy">分批加碼</span></td>
+                <td>高<div class="bar"><i style="width: 82%;"></i></div></td>
+              </tr>
+              <tr>
+                <td><span class="ticker">AMD</span><span class="company">Advanced Micro Devices</span></td>
+                <td>AI 加速器仍有追趕空間，股價彈性較高，但需要出貨與市占證明。</td>
+                <td>MI 系列出貨、資料中心營收</td>
+                <td><span class="score watch">積極型觀察</span></td>
+                <td>中高<div class="bar"><i style="width: 70%;"></i></div></td>
+              </tr>
+              <tr>
+                <td><span class="ticker">SMH</span><span class="company">VanEck Semiconductor ETF</span></td>
+                <td>涵蓋半導體龍頭，適合降低單一個股風險並參與產業趨勢。</td>
+                <td>半導體 ETF 淨流入、SOX 指數</td>
+                <td><span class="score buy">核心配置</span></td>
+                <td>高<div class="bar"><i style="width: 80%;"></i></div></td>
+              </tr>
+              <tr>
+                <td><span class="ticker">XLU</span><span class="company">Utilities Select Sector SPDR</span></td>
+                <td>資料中心用電帶動公用事業與電網投資題材，兼具防禦屬性。</td>
+                <td>電力需求、長約與監管核准</td>
+                <td><span class="score watch">保守型配置</span></td>
+                <td>中<div class="bar"><i style="width: 62%;"></i></div></td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>客戶態樣與自動分群</h2>
+          <div class="customer-grid">
+            <div class="segment-card">
+              <div class="segment-head">
+                <div><b>成長進攻型</b><span>美股科技持倉高、近 90 天互動熱</span></div>
+                <span class="fit">適配 92</span>
+              </div>
+              <div class="tag-row">
+                <span class="tag green">NVDA / AVGO</span>
+                <span class="tag">高風險承受</span>
+                <span class="tag">主動交易</span>
+              </div>
+              <div class="script-box"><strong>切入話術：</strong>「這次戰情表看到資金仍集中在 AI 基建，但市場開始從龍頭往 ASIC、散熱、電力設備擴散。您原本就有科技股部位，我們可以一起檢查是否需要把單一個股風險分散到第二層供應鏈。」</div>
+            </div>
+
+            <div class="segment-card">
+              <div class="segment-head">
+                <div><b>穩健參與型</b><span>偏好 ETF、定期定額、回撤容忍中等</span></div>
+                <span class="fit">適配 86</span>
+              </div>
+              <div class="tag-row">
+                <span class="tag green">SMH / QQQ</span>
+                <span class="tag">分批配置</span>
+                <span class="tag amber">不追高</span>
+              </div>
+              <div class="script-box"><strong>切入話術：</strong>「如果您想參與 AI 趨勢，但不想押單一公司，這份報告建議可以用半導體或大型科技 ETF 作核心配置，透過分批方式降低進場時點壓力。」</div>
+            </div>
+
+            <div class="segment-card">
+              <div class="segment-head">
+                <div><b>防禦收益型</b><span>重視波動控制、現金流、資產穩定</span></div>
+                <span class="fit">適配 74</span>
+              </div>
+              <div class="tag-row">
+                <span class="tag green">XLU / VOO</span>
+                <span class="tag">低波動</span>
+                <span class="tag amber">利率敏感</span>
+              </div>
+              <div class="script-box"><strong>切入話術：</strong>「AI 資料中心也帶動電力需求，若您比較在意波動，未必一定要買高本益比科技股，可以從大型指數與公用事業 ETF 參與較穩健的受惠鏈。」</div>
+            </div>
+          </div>
+
+          <table style="margin-top: 14px;">
+            <thead>
+              <tr>
+                <th style="width: 18%;">分群依據</th>
+                <th>系統判斷欄位</th>
+                <th>推薦素材</th>
+                <th style="width: 20%;">理專切入重點</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>既有持倉</b></td>
+                <td>美股、ETF、科技股比重、未實現損益、集中度。</td>
+                <td>投資戰情表、個股觀測清單、風險提醒。</td>
+                <td>調整部位結構</td>
+              </tr>
+              <tr>
+                <td><b>交易行為</b></td>
+                <td>近 90 天下單頻率、搜尋紀錄、報告開啟率、活動參與。</td>
+                <td>積極型腳本、產業輪動圖、催化因素表。</td>
+                <td>快速承接題材</td>
+              </tr>
+              <tr>
+                <td><b>風險偏好</b></td>
+                <td>投資屬性、最大回撤容忍、商品適合度、過往停損行為。</td>
+                <td>保守型腳本、ETF 組合、風險檢核表。</td>
+                <td>降低進場焦慮</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>整體投資策略</h2>
+          <div class="strategy-grid">
+            <div class="strategy aggressive">
+              <h3>積極型</h3>
+              <ul>
+                <li>以 AI 半導體、ASIC、散熱、電力設備為主軸，採 60% 核心股加 40% 衛星股。</li>
+                <li>買點以回測 20 日或 50 日均線、量縮止跌為優先，不在消息面最熱時一次買滿。</li>
+                <li>候選組合：NVDA、AVGO、AMD、VRT、SMH。</li>
+              </ul>
+            </div>
+            <div class="strategy conservative">
+              <h3>保守型</h3>
+              <ul>
+                <li>以 ETF 與大型現金流企業為主，降低財報與單一供應鏈風險。</li>
+                <li>配置建議：QQQ 或 VOO 作核心，SMH 小比例參與半導體，XLU 作防禦平衡。</li>
+                <li>若殖利率快速上行，先降低高本益比個股曝險。</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>理專話術與行動清單</h2>
+          <div class="view-tabs" role="tablist" aria-label="話術素材類型">
+            <button class="active" type="button" role="tab" aria-selected="true" data-tab-target="script-open">切入話術</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="script-selling">銷售重點</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="script-story">主題故事</button>
+            <button type="button" role="tab" aria-selected="false" data-tab-target="script-education">教育素材</button>
+          </div>
+          <div class="tab-panel active" id="script-open">
+            <div class="action-grid">
+              <div class="action-card">
+                <strong>第一句開場</strong>
+                <span>「今天的戰情表把 AI 題材拆成核心股、ETF 與電力供應鏈，我想先用 3 分鐘幫您對一下目前部位是否吻合。」</span>
+              </div>
+              <div class="action-card">
+                <strong>成長型客戶</strong>
+                <span>強調 AI 供應鏈擴散，從龍頭延伸到 ASIC、散熱與電力設備。</span>
+              </div>
+              <div class="action-card">
+                <strong>穩健型客戶</strong>
+                <span>用 ETF 參與主題，降低押單一公司的壓力。</span>
+              </div>
+              <div class="action-card">
+                <strong>防禦型客戶</strong>
+                <span>先談資料中心用電需求，再銜接大型指數與公用事業配置。</span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="script-selling">
+            <div class="action-grid">
+              <div class="action-card">
+                <strong>商品選擇</strong>
+                <span>依客戶風險屬性選擇個股、ETF 或防禦配置，不用同一套商品推給所有人。</span>
+              </div>
+              <div class="action-card">
+                <strong>時點設計</strong>
+                <span>建議分批與回檔布局，避免在新聞最熱時一次買滿。</span>
+              </div>
+              <div class="action-card">
+                <strong>風險控管</strong>
+                <span>先確認客戶可承受回撤，再決定個股與 ETF 比例。</span>
+              </div>
+              <div class="action-card">
+                <strong>後續追蹤</strong>
+                <span>用 CPI、財報、雲端 capex 作為下次聯繫的觀察節點。</span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="script-story">
+            <div class="action-grid">
+              <div class="action-card">
+                <strong>主題開頭</strong>
+                <span>AI 投資從晶片開始，但真正的機會會擴散到資料中心基礎建設。</span>
+              </div>
+              <div class="action-card">
+                <strong>供應鏈故事</strong>
+                <span>GPU 需要高速網通、散熱與穩定電力，第二層供應鏈因此被市場重估。</span>
+              </div>
+              <div class="action-card">
+                <strong>客戶連結</strong>
+                <span>把客戶既有持倉放進故事中，說明目前曝險在哪一段價值鏈。</span>
+              </div>
+              <div class="action-card">
+                <strong>收斂結論</strong>
+                <span>不是追逐題材，而是用分散配置參與長期資本支出趨勢。</span>
+              </div>
+            </div>
+          </div>
+          <div class="tab-panel" id="script-education">
+            <div class="action-grid">
+              <div class="action-card">
+                <strong>教育素材</strong>
+                <span>AI 基建價值鏈：GPU、ASIC、HBM、網通、散熱、電力。</span>
+              </div>
+              <div class="action-card">
+                <strong>追問問題</strong>
+                <span>「您比較想參與成長彈性，還是希望降低波動、用 ETF 慢慢布局？」</span>
+              </div>
+              <div class="action-card">
+                <strong>風險提醒</strong>
+                <span>高估值商品遇到利率反彈或財報不如預期時，波動可能放大。</span>
+              </div>
+              <div class="action-card">
+                <strong>下一步任務</strong>
+                <span>寄送客製化摘要，標記 3 個適合客戶的觀察標的，安排一週後追蹤。</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>關鍵風險提示</h2>
+          <div class="risk-list">
+            <div class="risk"><strong>估值過熱</strong><span>AI 龍頭若財報僅符合預期，可能出現獲利了結。</span></div>
+            <div class="risk"><strong>利率反彈</strong><span>通膨或 Fed 訊號偏鷹，將壓縮成長股估值。</span></div>
+            <div class="risk"><strong>供應鏈瓶頸</strong><span>先進封裝、HBM、電力容量若延宕，可能影響出貨節奏。</span></div>
+            <div class="risk"><strong>政策與地緣</strong><span>出口管制、關稅或區域衝突會放大半導體波動。</span></div>
+          </div>
+          <p class="note">本頁為版型示意，所有內容皆為假資料，不構成投資建議。正式版會標示引用來源、搜尋時間與文件摘要依據。</p>
+        </section>
+      </div>
+
+      <aside>
+        <section>
+          <h2>資料處理流程</h2>
+          <div class="flow">
+            <div class="flow-step"><span class="num">1</span><p><b>定時讀取</b><br>每天 09:30 掃描指定資料夾的新文件。</p></div>
+            <div class="flow-step"><span class="num">2</span><p><b>萃取觀點</b><br>辨識多頭論點、資金流向、股票與 ETF。</p></div>
+            <div class="flow-step"><span class="num">3</span><p><b>搜尋佐證</b><br>以關鍵字搜尋路透、Bloomberg、鉅亨網等媒體。</p></div>
+            <div class="flow-step"><span class="num">4</span><p><b>投資推導</b><br>延伸可能受惠產業、供應鏈與概念股。</p></div>
+            <div class="flow-step"><span class="num">5</span><p><b>客戶分群</b><br>依持倉、交易行為、風險偏好找出合適客群。</p></div>
+            <div class="flow-step"><span class="num">6</span><p><b>素材生成</b><br>輸出理專話術、銷售重點、主題故事與教育素材。</p></div>
+            <div class="flow-step"><span class="num">7</span><p><b>理專執行</b><br>提供客戶切入重點與後續追蹤任務。</p></div>
+          </div>
+        </section>
+
+        <section>
+          <h2>文件關鍵字</h2>
+          <div class="tag-row">
+            <span class="tag green">AI capex</span>
+            <span class="tag">GPU</span>
+            <span class="tag">ASIC</span>
+            <span class="tag">HBM</span>
+            <span class="tag amber">殖利率</span>
+            <span class="tag">資料中心</span>
+            <span class="tag">電力設備</span>
+            <span class="tag">雲端服務</span>
+            <span class="tag amber">通膨</span>
+          </div>
+        </section>
+
+        <section>
+          <h2>新聞佐證清單</h2>
+          <div class="sources">
+            <div class="source">
+              <div class="name"><span>Reuters</span><span>假資料</span></div>
+              <p>雲端業者提高資料中心投資，市場關注 GPU 與電力供應瓶頸。</p>
+            </div>
+            <div class="source">
+              <div class="name"><span>Bloomberg</span><span>假資料</span></div>
+              <p>華爾街上修 AI 相關資本支出預估，但提醒估值敏感度升高。</p>
+            </div>
+            <div class="source">
+              <div class="name"><span>鉅亨網</span><span>假資料</span></div>
+              <p>半導體 ETF 連續吸金，資金同步留意記憶體與散熱概念股。</p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h2>產業推導</h2>
+          <ul>
+            <li>AI 伺服器：GPU、ASIC、HBM、先進封裝。</li>
+            <li>資料中心基建：電力設備、散熱、光通訊、交換器。</li>
+            <li>防禦平衡：大型 ETF、公用事業、現金流穩定企業。</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>客群推播摘要</h2>
+          <div class="sources">
+            <div class="source">
+              <div class="name"><span>優先推播</span><span>成長進攻型</span></div>
+              <p>適合主動交易、美股科技部位高、近期關注 AI 或半導體新聞的客戶。</p>
+            </div>
+            <div class="source">
+              <div class="name"><span>穩健推播</span><span>ETF 參與型</span></div>
+              <p>適合定期定額、偏好分散風險、想參與趨勢但不想承擔單股波動的客戶。</p>
+            </div>
+            <div class="source">
+              <div class="name"><span>教育推播</span><span>防禦收益型</span></div>
+              <p>先用資料中心用電與公用事業題材建立理解，再引導至低波動配置。</p>
+            </div>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+  <script>
+    document.querySelectorAll(".view-tabs").forEach((tabList) => {
+      const buttons = Array.from(tabList.querySelectorAll("[data-tab-target]"));
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const panel = document.getElementById(button.dataset.tabTarget);
+          if (!panel) return;
+
+          buttons.forEach((item) => {
+            item.classList.toggle("active", item === button);
+            item.setAttribute("aria-selected", item === button ? "true" : "false");
+          });
+
+          buttons.forEach((item) => {
+            const relatedPanel = document.getElementById(item.dataset.tabTarget);
+            if (relatedPanel) {
+              relatedPanel.classList.toggle("active", item === button);
+            }
+          });
+        });
+      });
+    });
+  </script>
+</body>
+</html>
